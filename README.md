@@ -1,6 +1,6 @@
 <link href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
 
-# MODERN LIBRARY
+# MEGA LIVROS
 
 É um site para compartilhamento de livros digitais entre diversos usuários.
 
