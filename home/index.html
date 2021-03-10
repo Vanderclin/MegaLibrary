@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<meta name="description" content="Os livros são abelhas que levam o pólen de uma inteligência a outra. [James Russell Lowell]">
+	<meta name="author" content="Vanderclin Rocha">
+	<meta name="theme-color" content="#8257E6">
+
+	<link rel="icon" href="../assets/icons/favicon.ico">
+
+	<title>Modern Library</title>
+
+	<link href="https://kit-pro.fontawesome.com/releases/v5.14.0/css/pro.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+	<link href="../css/customization.css" rel="stylesheet">
+	<link href="../css/croppie.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropme@latest/dist/cropme.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/cropme@latest/dist/cropme.min.js"></script>
+
+
+  </head>
+  <body oncontextmenu="return true" ondragstart="return false" onselectstart="return false">
+	<nav class="navbar navbar-dark bg-purple sticky-top">
+	  <div class="container-fluid">
+		<a class="navbar-brand" href="#">Modern Library</a>
+		<span class="ms-auto me-1" id="navbar-name"></span>
+		<div class="dropdown">
+		  <img class="navbar-avatar" src="../assets/icons/favicon.ico" id="dropdownAvatar" data-bs-toggle="dropdown">
+		  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownAvatar">
+			<li class="mb-1"><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-profile"><i class="fad fa-user-circle"></i> Perfil</a></li>
+			<hr class="divider">
+			<li class="mt-1 mb-1"><a class="dropdown-item disabled"><i class="fad fa-cog"></i> Configurações</a></li>
+			<hr class="divider">
+			<li class="mt-1"><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-signout"><i class="fad fa-sign-out-alt"></i> Sair</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	<div class="container">
+	  <div class="justify-content-center row" id="content-books"></div>
+	</div>
+	<div class="floating-action-button hide" role="group" aria-label="Floating Action Button" id="floatingActionButton">
+	  <div>
+		<button class="btn btn-fab" data-bs-toggle="modal" data-bs-target="#modal_add"><img class="img-fluid" src="../assets/icons/icon_plus.png"></button>
+	  </div>
+	</div>
+	<!-- Modal's -->
+
+	<!-- Modal Profile -->
+	<div class="modal fade" id="modal-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-sm px-3">
+		<div class="modal-content">
+		  <div class="modal-body">
+			<div class="account">
+			  <div class="account-images">
+				<img class="account-images-a" id="modal-account-image" src="../assets/icons/avatar.png">
+				<img class="account-images-b" id="modal-account-check" data-bs-toggle="collapse" data-bs-target="#modal-account-check-collapse" src="../assets/icons/user_error.png">
+			  </div>
+			  <div class="collapse" id="modal-account-check-collapse">
+				<h6 class="text-center small" id="modal-account-status">...</h6>
+			  </div>
+			  <div class="account-texts">
+				<h3 class="account-texts-a" id="modal-account-name">Username</h3>
+				<h6 class="account-texts-b" id="modal-account-email">username@mail.com</h6>
+			  </div>
+			  <div class="account-panel">
+				<div class="account-panel-left">
+				  <strong>Enviados</strong>
+				  <h6 class="small" id="level_upload">0</h6>
+				</div>
+				<div class="account-painel-right">
+				  <strong>Baixados</strong>
+				  <h6 class="small" id="level_download">0</h6>
+
+				</div>
+
+			  </div>
+			  <div class="account-painel">
+				<button class="btn btn-outline-light w-100 hide" id="modal-account-activation-button" onclick="accountActivation()">Ativar conta</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal Update Profile -->
+	<div class="modal fade" id="modal-update-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-sm px-3">
+		<div class="modal-content">
+		  <div class="modal-body">
+			<div class="d-flex">
+			  <div class="image-avatar mx-auto">
+				<div class="image-avatar-upload">
+				  <label class="mx-auto" for="avatar">
+					<img id="avatar_view" src="../assets/icons/avatar.png" />
+				  </label>
+				  <input class="item-img" id="avatar" type="file" accept="image/*"/>
+				</div>
+			  </div>
+			</div>
+			<div class="progress">
+			  <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			<div class="input-group mt-3 mb-3">
+			  <input type="text" class="form-control" placeholder="Nome do usuário" aria-label="E-mail" id="avatar-name">
+			</div>
+			<button class="btn btn-outline-light w-100" onclick="updateProfile()">Atualizar</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal Add -->
+	<div class="modal fade" id="modal_add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-sm px-3">
+		<div class="modal-content">
+		  <div class="modal-body">
+			<div class="d-flex">
+			  <div class="image-preview mx-auto">
+				<div class="image-preview-upload">
+				  <label for="book_image">
+					<img id="book_image_preview" src="../assets/images/cover.png" />
+				  </label>
+				  <input id="book_image" type="file" accept="image/*" />
+				</div>
+			  </div>
+			</div>
+			<div class="input-group m-auto mt-1 mb-1">
+			  <input type="text" class="form-control" id="book_name" placeholder="Nome do livro"/>
+			</div>
+			<div class="input-group m-auto mt-1 mb-1">
+			  <input type="text" class="form-control" id="book_author" placeholder="Nome do autor">
+			</div>
+			<div class="input-group m-auto mt-1 mb-1">
+			  <input type="url" class="form-control" id="book_url" placeholder="Link compartilhado">
+			</div>
+			<div class="form-floating m-auto mt-1 mb-1">
+			  <textarea class="form-control h-100" placeholder="Descrição do produto" id="book_description"></textarea>
+			  <label class="text-muted" for="book_description">Descrição do produto</label>
+			</div>
+			<div class="progress m-auto mt-1 mb-1">
+			  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		  </div>
+
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+			<button type="button" class="btn btn-outline-light" id="publish_post">Publicar</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal SignOut -->
+	<div class="modal fade" id="modal-signout" data-bs-backdrop="static" data-bs-keyboard="false"   tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-sm px-3">
+		<div class="modal-content">
+		  <div class="modal-body">
+			<h6 class="text-center">Você deseja realmente sair?</h6>
+			<div class="w-100">
+			  <button class="btn btn-outline-light w-49" data-bs-dismiss="modal">Não</button>
+			  <button class="btn btn-outline-light w-49" id="modal-button-signout">Sim</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal Content Book -->
+	<div class="modal fade" id="modal-content-book" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered px-3">
+		<div class="modal-content">
+		  <div class="modal-body">
+			<div class="panel-box">
+			  <div class="panel-box-left">
+				<img class="image-content-book mx-auto" src="../assets/images/cover.png" id="b_image">
+			  </div>
+			  <div class="panel-box-right">
+				<div class="panel-box-right-inside">
+				  <h5 id="b_name"></h5>
+				  <h6 id="b_author"></h6>
+				  <div class="scroll">
+					<p class="lead" id="b_description"></p>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="d-flex mb-2">
+			  <span class="ms-auto w-50 mx-1 badge rounded-pill bg-primary"><i class="fad fa-eye me-1"></i><b class="ms-1" id="b_views">0</b></span>
+			  <span class="ms-auto w-50 mx-1 badge rounded-pill bg-purple"><i class="fad fa-download me-1"></i>‎<b class="ms-1" id="b_download_number">0</b></span>
+			</div>
+			<hr>
+			<div id="b_download">
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal Presentation -->
+	<div class="modal fade" id="modal_presentation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-sm px-3">
+		<div class="modal-content">
+		  <div class="modal-body">
+			<div class="mb-3 text-center">
+			  <h1>Olá! 😊</h1>
+			  <p class="lead">Hoje é o seu primeiro dia e estamos muito felizes em tê-lo na nossa equipe de leitores.<br>Seja bem-vindo e vamos juntos compartilhar!</p>
+			</div>
+			<button class="btn btn-outline-light w-100" data-bs-dismiss="modal" onclick="setTrue()">OK</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- Toasts -->
+	<div class="toast bg-dark mx-auto my-3 fixed-bottom" id="alert-message" data-bs-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
+	  <div class="toast-body text-center">
+		<span id="message"></span>
+	  </div>
+	</div>
+
+	<script src="../js/vendor/jquery-3.5.1.slim.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/croppie.js"></script>
+	<script src="../js/customization.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+	<script src="../js/firebase/firebase-home.js"></script>
+  </body>
+</html>		

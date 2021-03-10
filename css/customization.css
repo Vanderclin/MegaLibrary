@@ -1,0 +1,403 @@
+/** Vanderclin Rocha **/
+@font-face {
+    font-family: 'Cuprum-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cuprum-Regular'), url('../assets/fonts/Cuprum-Regular.ttf') format('truetype');
+}
+
+html,
+body {
+  background-color: #1F1F1F;
+  font-size: 14px;
+  font-family: Cuprum-Regular;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/****************************/
+.account {
+  height: auto;
+  width: 100%;
+}
+
+.account-images {
+  border-radius: 50%;
+  height: 74px;
+  margin: 0 auto;
+  width: 74px;
+}
+.account-images-a {
+  background-color: #1F1F1F;
+  border: solid 2px #573B93;
+  border-radius: 50%;
+  height: 72px;
+  position: absolute;
+  width: 72px;
+}
+
+.account-images-b {
+  background-color: #1F1F1F;
+  border: solid 2px #573B93;
+  border-radius: 50%;
+  height: 20px;
+  left: 67%;
+  margin: auto;
+  position: relative;
+  top: 67%;
+  width: 20px;
+}
+
+.account-texts {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.account-texts-a {
+  
+}
+
+.account-texts-b {
+  line-height: 0.3;
+}
+
+.account-panel {
+  margin-top: 20px;
+}
+
+.account-panel-left {
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+
+.account-painel-right {
+  float: right;
+  text-align: center;
+  width: 50%;
+}
+
+.bg-purple {
+  background: #8257E6;
+}
+
+
+.card {
+  background: #000;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, .4);
+  height: 240px;
+  margin: 8px;
+  overflow: hidden;
+  padding:0px;
+  width: 170px;  
+}
+
+.card img {
+  object-fit: fill; /* fill, contain, cover, none, scale-down */
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.divider {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.dropdown-menu-dark {
+  background: #8257E6;
+  color: #fff;
+}
+
+.error {
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.error-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.error-center h1{
+  font-size: 50px;
+  display: inline-block;
+}
+
+.form {
+  margin: auto;
+  max-width: 330px;
+  padding: 15px;
+  width: 100%;
+}
+
+.form .form-control {
+  box-sizing: border-box;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  position: relative;
+}
+
+.form .form-control:focus {
+  z-index: 2;
+}
+
+.form img {
+  display: flex;
+  margin: 0 auto;
+}
+.form input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.form input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+.floating-action-button {
+	bottom: 16px;
+	height: auto;
+	position: fixed;
+	right: 20px;
+	width: 50px;
+	z-index: 1000;
+}
+.floating-action-button .btn {
+	border-radius: 50%;
+	bottom: 0;
+	display: block;
+	height: 40px;
+	margin: 4px auto;
+	margin-bottom: 4px;
+	position: absolute;
+	width: 40px;
+}
+.floating-action-button .btn-fab {
+	background: #8257E6;
+	border: solid 1px #573B93;
+	height: 55px;
+	margin-right: -25px;
+	right: 50%;
+	width: 55px;
+	z-index: 0;
+}
+.floating-action-button div {
+	height: auto;
+	position: relative;
+	width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.image-avatar {
+  align-items: center;
+  display: flex;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.image-avatar span {
+  font-size: 8pt;
+}
+
+.image-avatar-upload {
+    display: flex;
+}
+
+.image-avatar-upload > input {
+    display: none;
+}
+
+.image-avatar-upload img {
+    background-color: #8257E6;
+	border: solid 3px #573B93;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 110px;
+    padding: 1px;
+    width: 110px;
+}
+
+.image-preview {
+  align-items: center;
+  display: flex;
+  height: 192px;
+  width: 136px;
+}
+
+.image-preview-upload {
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}
+
+.image-preview-upload > input {
+    display: none;
+}
+
+.image-preview-upload img {
+    background-color: #fff;
+	border: solid 2px #573B93;
+    border-radius: 1%;
+    cursor: pointer;
+    height: 192px;
+	object-fit: fill;
+    width: 136px;
+}
+
+.image-content-book {
+  border: solid 1px #8257E6;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px 5px rgba(87, 59, 147, 0.8);
+  height: 168px;
+  width: 119px;
+}
+
+
+.modal-content {
+  background: #1F1F1F;
+  border: solid 2px #573B93;
+}
+
+.navbar-avatar {
+  background: #1F1F1F;
+  border: solid 2px #573B93;
+  border-radius: 50%;
+  height: auto;
+  margin-right: 0px;
+  width: 28px;
+}
+
+.panel {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.panel-box {
+  height: 100%;
+  margin-bottom: 1px;
+  max-height: 176px;
+  min-height: 176px;
+  width: 100%;
+}
+
+.panel-box-left {
+  display: flex;
+  float: left;
+  height:auto ;
+  width: 40%;
+}
+
+.panel-box-right {
+  float: right;
+  height: auto;
+  width: 60%;
+}
+
+.panel-box-right-inside {
+  max-height: 168px;
+  min-height: 168px;
+  height: 168px;
+  overflow-y: hidden;
+}
+
+.panel-box-right h5 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.panel-box-right h6 {
+  color: #ff9800;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.progress {
+  border: solid 2px #573B93;
+}
+
+.scroll {
+  color: #fff;
+  font-size: 9pt;
+  overflow-y: auto;
+  height: 77%;
+}
+
+.scroll p {
+  padding: 1px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 6px
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: #573B93;
+    border-radius: 5px;
+    border: solid 1px #fff;
+}
+
+.scroll::-webkit-scrollbar-thumb:hover {
+    background: #555
+}
+
+.toast {
+  border: solid 1px #8257E6;
+}
+
+.w-49 {
+  width: 49%;
+}
+
+
+/** #IDS **/
+#main-signin {
+  background-color: #8257E6;
+  color: white;
+  display: flex;
+  display: -ms-flexbox;
+  height: 100%;
+  ms-flex-align: center;
+  padding: 10px 10px 10px 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+
+#main-signup {
+  background-color: #8257E6;
+  color: white;
+  display: -ms-flexbox;
+  height: 100%;
+  ms-flex-align: center;
+  padding: 10px 10px 10px 10px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
