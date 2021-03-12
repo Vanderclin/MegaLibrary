@@ -25,6 +25,27 @@ firebase.auth().onAuthStateChanged(function (user) {
 		firebase.database().ref('users').child(uid).on('value', function (snapshot) {
 			var upl = snapshot.child('uploads_level').val();
 			var dwl = snapshot.child('downloads_level').val();
+			
+			
+			
+			
+			/** Uploaded daily **/
+			var sunday_ul = snapshot.child('uploads_scale').child('sunday').val();
+			var monday_ul = snapshot.child('uploads_scale').child('monday').val();
+			var tuesday_ul = snapshot.child('uploads_scale').child('tuesday').val();
+			var wednesday_ul = snapshot.child('uploads_scale').child('wednesday').val();
+			var thursday_ul = snapshot.child('uploads_scale').child('thursday').val();
+			var friday_ul = snapshot.child('uploads_scale').child('friday').val();
+			var saturday_ul = snapshot.child('uploads_scale').child('saturday').val();
+			/** Downloaded daily **/
+			var sunday_dl = snapshot.child('downloads_scale').child('sunday').val();
+			var monday_dl = snapshot.child('downloads_scale').child('monday').val();
+			var tuesday_dl = snapshot.child('downloads_scale').child('tuesday').val();
+			var wednesday_dl = snapshot.child('downloads_scale').child('wednesday').val();
+			var thursday_dl = snapshot.child('downloads_scale').child('thursday').val();
+			var friday_dl = snapshot.child('downloads_scale').child('friday').val();
+			var saturday_dl = snapshot.child('downloads_scale').child('saturday').val();
+			
 			if (upl === null) {
 				document.getElementById("level_upload").innerText = 0;
 			} else {
@@ -35,6 +56,49 @@ firebase.auth().onAuthStateChanged(function (user) {
 			} else {
 				document.getElementById("level_download").innerText = dwl;
 			}
+			
+
+			var ctx = document.getElementById('myChart');
+			// eslint-disable-next-line no-unused-vars
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+					datasets: [{
+						data: [ sunday_ul, monday_ul, tuesday_ul, wednesday_ul, thursday_ul, friday_ul, saturday_ul],
+						label: 'Enviados',
+						lineTension: 0,
+						backgroundColor: '#573B93',
+						borderColor: '#8257E6',
+						borderWidth: 3,
+						pointBackgroundColor: '#573B93'
+					},
+					{
+						data: [ sunday_dl, monday_dl, tuesday_dl, wednesday_dl, thursday_dl, friday_dl, saturday_dl ],
+						label: 'Baixados',
+						lineTension: 0,
+						backgroundColor: '#BC417E',
+						borderColor: '#DC3545',
+						borderWidth: 3,
+						pointBackgroundColor: '#BC417E'
+					}
+					]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: false
+							}
+						}]
+					},
+					legend: {
+						display: true
+					}
+				}
+			});
+
+
 		});
 
 		firebase.database().ref('users').child(uid).on('value', function (snapshot) {
@@ -107,6 +171,20 @@ function setTrue() {
 	var uid = firebase.auth().currentUser.uid;
 	firebase.database().ref('users').child(uid).child('presentation').set(true);
 }
+
+/** Account Delete *****************************************/
+function accountDelete() {
+	var user = firebase.auth().currentUser;
+	user.delete().then(function () {
+		// User deleted
+		setTimeout(function () {
+			window.location.replace("/");
+		}, 1000);
+	}).catch(function (error) {
+		// An error happened.
+	});
+}
+/***********************************************************/
 
 function updateProfile() {
 
@@ -199,6 +277,7 @@ $(document).ready(function () {
 		}, function (error) {
 			// Handle unsuccessful uploads
 		}, function () {
+			firebase.database().ref('users').child(uid).child('uploads_scale').child(daysName(new Date)).set(firebase.database.ServerValue.increment(1));
 			// Handle successful uploads on complete
 			// For instance, get the download URL: https://firebasestorage.googleapis.com/...
 			uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
@@ -272,9 +351,18 @@ function getURL(url) {
 			window.open(book_url, '_blank');
 		}
 	});
-
+	
 	var uid = firebase.auth().currentUser.uid;
 	firebase.database().ref('posts').child(url).child('book_download').set(firebase.database.ServerValue.increment(1));
 	firebase.database().ref('users').child(uid).child('downloads_level').set(firebase.database.ServerValue.increment(1));
+	firebase.database().ref('users').child(uid).child('downloads_scale').child(daysName(new Date)).set(firebase.database.ServerValue.increment(1));
 	$("#modal-content-book").modal("hide");
+}
+
+function daysName(date) {
+	var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+	var dn = String(date.getDay());
+	var dayName = days[dn];
+    var names = dayName;
+    return names;
 }
