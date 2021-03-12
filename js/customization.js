@@ -64,8 +64,12 @@ $("#newpassword").click(function () {
 });
 
 
-
-/* globals Chart:false, feather:false */
-
-  // Grap
-  
+// Barra de pesquisa
+$(document).ready(function () {
+    $("#book_search").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $('div[class="card"]').filter(function () {
+            $(this).toggle($(this).find('h5, h6').text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+});
