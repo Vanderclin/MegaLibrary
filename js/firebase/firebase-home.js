@@ -59,6 +59,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 			
 
 			var ctx = document.getElementById('panel_chart');
+			ctx.height = 150;
 			// eslint-disable-next-line no-unused-vars
 			var mChart = new Chart(ctx, {
 				type: 'line',
@@ -77,10 +78,10 @@ firebase.auth().onAuthStateChanged(function (user) {
 						data: [ sunday_dl, monday_dl, tuesday_dl, wednesday_dl, thursday_dl, friday_dl, saturday_dl ],
 						label: 'Baixados',
 						lineTension: 0,
-						backgroundColor: '#BC417E',
-						borderColor: '#DC3545',
+						backgroundColor: '#cc7a00',
+						borderColor: '#ff9800',
 						borderWidth: 3,
-						pointBackgroundColor: '#BC417E'
+						pointBackgroundColor: '#cc7a00'
 					}
 					]
 				},
