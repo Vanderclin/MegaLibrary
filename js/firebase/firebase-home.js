@@ -286,6 +286,7 @@ $(document).ready(function () {
 				firebase.database().ref('posts').child(bookkey).set({
 					book_image: downloadURL,
 					book_name: bookname,
+					book_author: bookauthor,
 					book_url: bookurl,
 					book_description: bookdescription,
 					book_key: bookkey
