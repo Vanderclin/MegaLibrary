@@ -58,9 +58,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 			}
 			
 
-			var ctx = document.getElementById('myChart');
+			var ctx = document.getElementById('panel_chart');
 			// eslint-disable-next-line no-unused-vars
-			var myChart = new Chart(ctx, {
+			var mChart = new Chart(ctx, {
 				type: 'line',
 				data: {
 					labels: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
@@ -71,7 +71,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 						backgroundColor: '#573B93',
 						borderColor: '#8257E6',
 						borderWidth: 3,
-						pointBackgroundColor: '#573B93'
+						pointBackgroundColor: '#573B93',
 					},
 					{
 						data: [ sunday_dl, monday_dl, tuesday_dl, wednesday_dl, thursday_dl, friday_dl, saturday_dl ],
@@ -88,7 +88,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 					scales: {
 						yAxes: [{
 							ticks: {
-								beginAtZero: false
+								beginAtZero: true
 							}
 						}]
 					},

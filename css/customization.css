@@ -509,3 +509,11 @@ input:checked + .slider:before {
 .panel-display-bottom {
   margin-top: 10px;
 }
+
+.panel_chart {
+  border: solid 1px #fff;
+  height: auto;
+  margin-top: 5rem;
+  margin-bottom: 1.5rem !important;
+  width: 100%;
+}
