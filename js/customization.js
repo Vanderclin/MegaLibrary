@@ -44,3 +44,28 @@ function readURL(input) {
 $("#avatar").change(function () {
 	readURL(this);
 });
+
+
+/** Switch Checkbox Button **/
+$("#deleteaccount").click(function () {
+	if (document.getElementById("deleteaccount").checked == true) {
+        document.getElementById("delete_account").disabled = false;
+    } else {
+        document.getElementById("delete_account").disabled = true;
+    }
+});
+
+$("#newpassword").click(function () {
+	if (document.getElementById("newpassword").checked == true) {
+        document.getElementById("new_password_account").disabled = false;
+    } else {
+        document.getElementById("new_password_account").disabled = true;
+    }
+});
+
+
+
+/* globals Chart:false, feather:false */
+
+  // Grap
+  
