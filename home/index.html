@@ -26,7 +26,7 @@
 		  <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownAvatar">
 			<li class="mb-1"><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-profile">Perfil</a></li>
 			<hr class="divider">
-			<li class="mt-1 mb-1"><a class="dropdown-item disabled">Configurações</a></li>
+			<li class="mt-1 mb-1"><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_settings">Configurações</a></li>
 			<hr class="divider">
 			<li class="mt-1"><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-signout">Sair</a></li>
 		  </ul>
@@ -72,8 +72,16 @@
 				</div>
 
 			  </div>
+			  
+			  <div class="">
+				<canvas class="my-4 w-100 h-100" id="myChart"></canvas>
+				
+			  </div>
+			  
+			  
+			  
 			  <div class="account-painel">
-				<button class="btn btn-outline-light w-100 hide" id="modal-account-activation-button" onclick="accountActivation()">Ativar conta</button>
+				<button class="btn btn-outline-purple w-100 hide" id="modal-account-activation-button" onclick="accountActivation()">Ativar conta</button>
 			  </div>
 			</div>
 		  </div>
@@ -101,7 +109,7 @@
 			<div class="input-group mt-3 mb-3">
 			  <input type="text" class="form-control" placeholder="Nome do usuário" aria-label="E-mail" id="avatar-name">
 			</div>
-			<button class="btn btn-outline-light w-100" onclick="updateProfile()">Atualizar</button>
+			<button class="btn btn-outline-purple w-100" onclick="updateProfile()">Atualizar</button>
 		  </div>
 		</div>
 	  </div>
@@ -140,8 +148,8 @@
 		  </div>
 
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
-			<button type="button" class="btn btn-outline-light" id="publish_post">Publicar</button>
+			<button type="button" class="btn btn-outline-purple" data-bs-dismiss="modal">Cancelar</button>
+			<button type="button" class="btn btn-outline-purple" id="publish_post">Publicar</button>
 		  </div>
 		</div>
 	  </div>
@@ -153,8 +161,8 @@
 		  <div class="modal-body">
 			<h6 class="text-center">Você deseja realmente sair?</h6>
 			<div class="w-100">
-			  <button class="btn btn-outline-light w-49" data-bs-dismiss="modal">Não</button>
-			  <button class="btn btn-outline-light w-49" id="modal-button-signout">Sim</button>
+			  <button class="btn btn-outline-purple w-49" data-bs-dismiss="modal">Não</button>
+			  <button class="btn btn-outline-purple w-49" id="modal-button-signout">Sim</button>
 			</div>
 		  </div>
 		</div>
@@ -180,7 +188,7 @@
 			  </div>
 			</div>
 			<div class="d-flex mb-2">
-			  <span class="ms-auto w-50 mx-1 badge rounded-pill bg-primary"><i class="fad fa-eye me-1"></i><b class="ms-1" id="b_views">0</b></span>
+			  <span class="ms-auto w-50 mx-1 badge rounded-pill bg-purple"><i class="fad fa-eye me-1"></i><b class="ms-1" id="b_views">0</b></span>
 			  <span class="ms-auto w-50 mx-1 badge rounded-pill bg-purple"><i class="fad fa-download me-1"></i>‎<b class="ms-1" id="b_download_number">0</b></span>
 			</div>
 			<hr>
@@ -199,7 +207,52 @@
 			  <h1>Olá! 😊</h1>
 			  <p class="lead">Hoje é o seu primeiro dia e estamos muito felizes em tê-lo na nossa equipe de leitores.<br>Seja bem-vindo e vamos juntos compartilhar!</p>
 			</div>
-			<button class="btn btn-outline-light w-100" data-bs-dismiss="modal" onclick="setTrue()">OK</button>
+			<button class="btn btn-outline-purple w-100" data-bs-dismiss="modal" onclick="setTrue()">OK</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- Modal Settings -->
+	<div class="modal fade" id="modal_settings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-sm px-3">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h3 class="modal-title">Configurações</h3>
+		  </div>
+		  <div class="modal-body">
+
+			<div class="panel-display">
+			  <div class="panel-display-left">
+				<h4>Alterar senha</h4>
+			  </div>
+			  <div class="panel-display-right">
+				<label class="switch" for="newpassword">
+				  <input type="checkbox" id="newpassword" />
+				  <div class="slider round"></div>
+				</label>
+			  </div>
+			  <div class="panel-display-bottom">
+				<button class="btn btn-outline-purple w-100" disabled id="new_password_account" onclick="accountNewPassword()">Alterar</button>
+			  </div>
+			</div>
+
+			<hr>
+			<div class="switch-panel">
+			  <div class="switch-panel-left">
+				<h3>Excluir minha conta</h3>
+			  </div>
+			  <div class="switch-panel-right">
+				<label class="switch" for="deleteaccount">
+				  <input type="checkbox" id="deleteaccount" />
+				  <div class="slider round"></div>
+				</label>
+			  </div>
+			  <div class="switch-panel-bottom">
+				<button class="btn btn-outline-purple w-100" disabled id="delete_account" onclick="accountDelete()">Excluir</button>
+			  </div>
+			</div>
+
 		  </div>
 		</div>
 	  </div>
@@ -213,6 +266,7 @@
 	</div>
 
 	<script src="../js/vendor/jquery-3.5.1.slim.min.js"></script>
+	<script src="../js/vendor/Chart.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
 	<script src="../js/customization.js"></script>
 
