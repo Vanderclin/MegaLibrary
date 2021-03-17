@@ -243,6 +243,7 @@ $(document).ready(function () {
 		card += '<div class="card">';
 		card += '<img src="' + snapshot.child('book_image').val() + '" id="' + snapshot.child('book_key').val() + '" onClick="resultClick(this.id)">';
 		card += '<h5 class="hide">' + snapshot.child('book_name').val() + '</h5>';
+		card += '<h6 class="hide">' + snapshot.child('book_author').val() + '</h6>';
 		card += '</div>';
 
 		$("#content-books").html($("#content-books").html() + card);

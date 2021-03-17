@@ -55,9 +55,19 @@
 
   </head>
   <body oncontextmenu="return true" ondragstart="return false" onselectstart="return false">
-	<nav class="navbar navbar-dark bg-purple sticky-top">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-purple">
 	  <div class="container-fluid">
-		<a class="navbar-brand" href="#">Mega Library</a>
+		<div class="me-1" id="menu-hamb" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
+		  <div class="animated-icon ms-auto">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		  </div>
+		</div>
+		
+		<a class="navbar-brand me-auto" href="#">Mega Library</a>
+		
 		<span class="ms-auto me-1" id="navbar-name"></span>
 		<div class="dropdown">
 		  <img class="navbar-avatar" src="../assets/content/icon/favicon.ico" id="dropdownAvatar" data-bs-toggle="dropdown">
@@ -69,8 +79,14 @@
 			<li class="mt-1"><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-signout">Sair</a></li>
 		  </ul>
 		</div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <form class="d-flex">
+			<input class="form-control mt-2" id="search_bar" type="text" placeholder="Procurar" aria-label="Search">
+		  </form>
+		</div>
 	  </div>
 	</nav>
+	
 	<div class="container">
 	  <div class="input-group m-auto mt-3 mb-3 hide">
 		<input type="text" class="form-control" id="book_search" placeholder="Procurar"/>

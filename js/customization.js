@@ -5,7 +5,6 @@ $("#modal-account-check").click(function () {
 		3000);
 });
 
-
 function readURLTwo(input) {
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
@@ -66,10 +65,16 @@ $("#newpassword").click(function () {
 
 // Barra de pesquisa
 $(document).ready(function () {
-    $("#book_search").on("keyup", function () {
+    $("#search_bar").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $('div[class="card"]').filter(function () {
             $(this).toggle($(this).find('h5, h6').text().toLowerCase().indexOf(value) > -1);
         });
     });
+});
+// Menu Hamb
+$(document).ready(function () {
+  $('#menu-hamb').on('click', function () {
+    $('.animated-icon').toggleClass('open');
+  });
 });
