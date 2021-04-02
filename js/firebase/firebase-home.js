@@ -23,12 +23,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 		var providerData = user.providerData;
 		// Uploads & Downloads
 		firebase.database().ref('users').child(uid).on('value', function (snapshot) {
-			var upl = snapshot.child('uploads_level').val();
-			var dwl = snapshot.child('downloads_level').val();
-			
-			
-			
-			
+			var upl = snapshot.child('uploads').val();
+			var dwl = snapshot.child('downloads').val();
 			/** Uploaded daily **/
 			var sunday_ul = snapshot.child('uploads_scale').child('sunday').val();
 			var monday_ul = snapshot.child('uploads_scale').child('monday').val();
@@ -303,7 +299,7 @@ $(document).ready(function () {
 		$("#book_description").val("");
 
 		var uid = firebase.auth().currentUser.uid;
-		firebase.database().ref('users/').child(uid).child('uploads_level').set(firebase.database.ServerValue.increment(1));
+		firebase.database().ref('users/').child(uid).child('uploads').set(firebase.database.ServerValue.increment(1));
 
 		setTimeout(function () {
 			$("#modal_add").modal("hide");
@@ -359,7 +355,7 @@ function getURL(url) {
 	
 	var uid = firebase.auth().currentUser.uid;
 	firebase.database().ref('posts').child(url).child('downloads').set(firebase.database.ServerValue.increment(1));
-	firebase.database().ref('users').child(uid).child('downloads_level').set(firebase.database.ServerValue.increment(1));
+	firebase.database().ref('users').child(uid).child('downloads').set(firebase.database.ServerValue.increment(1));
 	firebase.database().ref('users').child(uid).child('downloads_scale').child(daysName(new Date)).set(firebase.database.ServerValue.increment(1));
 	$("#modal-content-book").modal("hide");
 }
