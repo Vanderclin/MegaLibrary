@@ -238,12 +238,12 @@ function updateProfile() {
 
 $(document).ready(function () {
 
-	firebase.database().ref('posts').orderByChild('book_name').on('child_added', function (snapshot) {
+	firebase.database().ref('posts').orderByChild('title').on('child_added', function (snapshot) {
 		var card = "";
 		card += '<div class="card">';
-		card += '<img src="' + snapshot.child('book_image').val() + '" id="' + snapshot.child('book_key').val() + '" onClick="resultClick(this.id)">';
-		card += '<h5 class="hide">' + snapshot.child('book_name').val() + '</h5>';
-		card += '<h6 class="hide">' + snapshot.child('book_author').val() + '</h6>';
+		card += '<img src="' + snapshot.child('image').val() + '" id="' + snapshot.child('key').val() + '" onClick="resultClick(this.id)">';
+		card += '<h5 class="hide">' + snapshot.child('title').val() + '</h5>';
+		card += '<h6 class="hide">' + snapshot.child('author').val() + '</h6>';
 		card += '</div>';
 
 		$("#content-books").html($("#content-books").html() + card);
@@ -286,12 +286,12 @@ $(document).ready(function () {
 			uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
 				console.log('File available at', downloadURL);
 				firebase.database().ref('posts').child(bookkey).set({
-					book_image: downloadURL,
-					book_name: bookname,
-					book_author: bookauthor,
-					book_url: bookurl,
-					book_description: bookdescription,
-					book_key: bookkey
+					image: downloadURL,
+					title: bookname,
+					author: bookauthor,
+					url: bookurl,
+					description: bookdescription,
+					key: bookkey
 				});
 			});
 		});
@@ -315,15 +315,16 @@ $(document).ready(function () {
 
 function resultClick(key) {
 	$("#modal-content-book").modal("show");
-	firebase.database().ref('posts').child(key).child('book_views').set(firebase.database.ServerValue.increment(1));
+	firebase.database().ref('posts').child(key).child('views').set(firebase.database.ServerValue.increment(1));
 	firebase.database().ref('posts').child(key).on('value', function getData(snapshot) {
-		var image = snapshot.child('book_image').val();
-		var name = snapshot.child('book_name').val();
-		var author = snapshot.child('book_author').val();
-		var description = snapshot.child('book_description').val();
-		var download = snapshot.child('book_download').val();
-		var views = snapshot.child('book_views').val();
-		var url = snapshot.child('book_url').val();
+		
+		var image = snapshot.child('image').val();
+		var name = snapshot.child('title').val();
+		var author = snapshot.child('author').val();
+		var description = snapshot.child('description').val();
+		var download = snapshot.child('downloads').val();
+		var views = snapshot.child('views').val();
+		var url = snapshot.child('url').val();
 
 		document.getElementById("b_image").src = image;
 		document.getElementById("b_name").innerText = name;
@@ -357,7 +358,7 @@ function getURL(url) {
 	});
 	
 	var uid = firebase.auth().currentUser.uid;
-	firebase.database().ref('posts').child(url).child('book_download').set(firebase.database.ServerValue.increment(1));
+	firebase.database().ref('posts').child(url).child('downloads').set(firebase.database.ServerValue.increment(1));
 	firebase.database().ref('users').child(uid).child('downloads_level').set(firebase.database.ServerValue.increment(1));
 	firebase.database().ref('users').child(uid).child('downloads_scale').child(daysName(new Date)).set(firebase.database.ServerValue.increment(1));
 	$("#modal-content-book").modal("hide");
