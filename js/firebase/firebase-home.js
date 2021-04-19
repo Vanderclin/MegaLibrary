@@ -193,10 +193,12 @@ function updateProfile() {
 	var uploadTask = storageRef.put(update_avatar);
 
 	uploadTask.on('state_changed', function (snapshot) {
-		// Observe state change events such as progress, pause, and resume
-		// Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
 		var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-		$('.progress-bar').css('width', progress + '%').attr('aria-valuenow', progress);
+		document.getElementById('percentage').innerText=parseInt(progress)+"%";
+		var finish = parseInt(progress);
+		if (finish == 100) {
+			setTimeout(function(){ window.location.reload(); }, 5000);
+		}
 		switch (snapshot.state) {
 			case firebase.storage.TaskState.PAUSED: // or 'paused'
 				console.log('Upload is paused');
