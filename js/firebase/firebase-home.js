@@ -347,7 +347,7 @@ function resultClick(key) {
 
 function getURL(url) {
 	firebase.database().ref('posts').child(url).on('value', function (snapshot) {
-		var book_url = snapshot.child('book_url').val();
+		var book_url = snapshot.child('url').val();
 		if (book_url === null) {
 			alert("O código não é válido!");
 		} else {
