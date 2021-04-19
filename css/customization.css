@@ -263,12 +263,14 @@ body {
   margin: 0 auto;
 }
 .form input[type="email"] {
+  background-color: #573B93;
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0
 }
 
 .form input[type="password"] {
+  background-color: #573B93;
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0
