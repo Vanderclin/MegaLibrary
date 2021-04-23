@@ -286,7 +286,7 @@ body {
 	position: fixed;
 	right: 20px;
 	width: 50px;
-	z-index: 1000;
+	z-index: 80;
 }
 .floating-action-button .btn {
 	border-radius: 50%;
@@ -603,4 +603,223 @@ input:checked + .slider:before {
   margin-top: 5rem;
   margin-bottom: 1.5rem !important;
   width: 100%;
+}
+
+.spinner-object {
+  width: 96px;
+  height: 96px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: RGB(255, 255, 255);
+  border-radius: 64px;
+  /* Chrome */
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-iteration-count: infinite;
+  /* Mozilla */
+  -moz-animation-name: spin;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: ease;
+  -moz-animation-iteration-count: infinite;
+  /* Microsoft */
+  -ms-animation-name: spin;
+  -ms-animation-duration: 1s;
+  -ms-animation-timing-function: ease;
+  -ms-animation-iteration-count: infinite;
+  /* Opera */
+  -o-animation-name: spin;
+  -o-animation-duration: 1s;
+  -o-animation-timing-function: ease;
+  -o-animation-iteration-count: infinite;
+  /* Standard */
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* ExtraBack */
+
+#extraBack {
+  opacity: 0.2;
+  /* Chrome */
+  -webkit-animation-delay: 0.4s;
+  /* Mozilla */
+  -moz-animation-delay: 0.4s;
+  /* Microsoft */
+  -ms-animation-delay: 0.4s;
+  /* Opera */
+  -o-animation-delay: 0.4s;
+  /* Standard */
+  animation-delay: 0.4s;
+}
+
+/* Back */
+
+#back {
+  opacity: 0.4;
+  /* Chrome */
+  -webkit-animation-delay: 0.3s;
+  /* Mozilla */
+  -moz-animation-delay: 0.3s;
+  /* Microsoft */
+  -ms-animation-delay: 0.3s;
+  /* Opera */
+  -o-animation-delay: 0.3s;
+  /* Standard */
+  animation-delay: 0.3s;
+}
+
+/* Middle */
+
+#middle {
+  opacity: 0.6;
+  /* Chrome */
+  -webkit-animation-delay: 0.2s;
+  /* Mozilla */
+  -moz-animation-delay: 0.2s;
+  /* Microsoft */
+  -ms-animation-delay: 0.2s;
+  /* Opera */
+  -o-animation-delay: 0.2s;
+  /* Standard */
+  animation-delay: 0.2s;
+}
+
+/* Front */
+
+#front {
+  opacity: 0.8;
+  /* Chrome */
+  -webkit-animation-delay: 0.1s;
+  /* Mozilla */
+  -moz-animation-delay: 0.1s;
+  /* Microsoft */
+  -ms-animation-delay: 0.1s;
+  /* Opera */
+  -o-animation-delay: 0.1s;
+  /* Standard */
+  animation-delay: 0.1s;
+}
+
+/* ExtraFront */
+
+#extraFront {
+  opacity: 1;
+  /* Chrome */
+  -webkit-animation-delay: 0s;
+  /* Mozilla */
+  -moz-animation-delay: 0s;
+  /* Microsoft */
+  -ms-animation-delay: 0s;
+  /* Opera */
+  -o-animation-delay: 0s;
+  /* Standard */
+  animation-delay: 0s;
+}
+
+/* ----- ANIMATIONS ----- */
+
+/* Chrome */
+
+@-webkit-keyframes spin {
+  100% {
+    /* Chrome */
+    -webkit-transform: rotate(360deg);
+    /* Mozilla */
+    -moz-transform: rotate(360deg);
+    /* Microsoft */
+    -ms-transform: rotate(360deg);
+    /* Opera */
+    -o-transform: rotate(360deg);
+    /* Standard */
+    transform: rotate(360deg);
+  }
+}
+
+/* Mozilla */
+
+@-moz-keyframes spin {
+  100% {
+    /* Chrome */
+    -webkit-transform: rotate(360deg);
+    /* Mozilla */
+    -moz-transform: rotate(360deg);
+    /* Microsoft */
+    -ms-transform: rotate(360deg);
+    /* Opera */
+    -o-transform: rotate(360deg);
+    /* Standard */
+    transform: rotate(360deg);
+  }
+}
+
+/* Microsoft */
+
+@-ms-keyframes spin {
+  100% {
+    /* Chrome */
+    -webkit-transform: rotate(360deg);
+    /* Mozilla */
+    -moz-transform: rotate(360deg);
+    /* Microsoft */
+    -ms-transform: rotate(360deg);
+    /* Opera */
+    -o-transform: rotate(360deg);
+    /* Standard */
+    transform: rotate(360deg);
+  }
+}
+
+/* Opera */
+
+@-o-keyframes spin {
+  100% {
+    /* Chrome */
+    -webkit-transform: rotate(360deg);
+    /* Mozilla */
+    -moz-transform: rotate(360deg);
+    /* Microsoft */
+    -ms-transform: rotate(360deg);
+    /* Opera */
+    -o-transform: rotate(360deg);
+    /* Standard */
+    transform: rotate(360deg);
+  }
+}
+
+/* Standard */
+
+@keyframes spin {
+  100% {
+    /* Chrome */
+    -webkit-transform: rotate(360deg);
+    /* Mozilla */
+    -moz-transform: rotate(360deg);
+    /* Microsoft */
+    -ms-transform: rotate(360deg);
+    /* Opera */
+    -o-transform: rotate(360deg);
+    /* Standard */
+    transform: rotate(360deg);
+  }
+}
+
+#loading {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: #8258E6;
 }
