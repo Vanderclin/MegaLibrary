@@ -51,7 +51,6 @@ function signIn() {
 
 function signUp() {
 
-	var name = document.getElementById('name_signup').value;
 	var email = document.getElementById('email-signup').value;
 	var password = document.getElementById('password-signup').value;
 	if (email.length < 4) {
@@ -73,19 +72,6 @@ function signUp() {
 			alert(errorMessage);
 			
 		}
-		var user = firebase.auth().currentUser;
-			var data = {
-				username: name,
-			};
-			firebase.database().ref().child("users").child(uid).set(data);
-
-			user.updateProfile({
-				displayName: name
-			}).then(function () {
-				// Update successful.
-			}).catch(function (error) {
-				// An error happened.
-			});
 		document.getElementById('button-sign-up').disabled = false;
 	});
 	document.getElementById('button-sign-up').disabled = true;
